@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecione o Tipo de Conta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-100 flex items-center justify-center h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Selecione o Tipo de Conta</h1>
+    <div class="flex flex-col gap-4">
+    <a href="{% url 'atleta_create' %}" class="w-full bg-blue-600 text-white py-2 rounded-lg text-center hover:bg-blue-700">Atleta</a>
+    <a href="{% url 'treinador_create' %}" class="w-full bg-blue-600 text-white py-2 rounded-lg text-center hover:bg-blue-700">Treinador</a>
+    <a href="{% url 'patrocinador_create' %}" class="w-full bg-blue-600 text-white py-2 rounded-lg text-center hover:bg-blue-700">Patrocinador</a>
+    <a href="{% url 'home' %}" class="w-full bg-green-600 text-white py-2 rounded-lg text-center hover:bg-green-700">Usuário Comum</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
