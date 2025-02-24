@@ -4,7 +4,6 @@ from .models import CustomUser, Atleta, Treinador, Patrocinador
 from .forms import CustomUserCreationForm,CustomAuthenticationForm, AtletaForm, TreinadorForm, PatrocinadorForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import TemplateView
-from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .models import CustomUser
 from .forms import CustomUserCreationForm
