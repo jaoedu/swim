@@ -1,0 +1,21 @@
+# Ignorar o ambiente virtual
+venv/
+.env
+*.pyc
+__pycache__/
+db.sqlite3
+
+# Ignorar arquivos e pastas do Git
+.git
+.gitignore
+
+# Ignorar logs e cache
+*.log
+*.swp
+*.swo
+.DS_Store
+
+# Ignorar arquivos temporários do editor
+*.vscode
+.idea/
+*.code-workspace
