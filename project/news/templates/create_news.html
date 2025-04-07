@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar Notícia{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-10 px-4">
+  <h1 class="text-2xl font-bold mb-6">Criar Notícia</h1>
+
+  <form method="post" enctype="multipart/form-data" class="space-y-6 bg-white p-6 rounded shadow">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div>
+      <label for="{{ form.titulo.id_for_label }}" class="block text-sm font-medium text-gray-700">Título</label>
+      {{ form.titulo }}
+      {{ form.titulo.errors }}
+    </div>
+
+    <div>
+      <label for="{{ form.conteudo.id_for_label }}" class="block text-sm font-medium text-gray-700">Conteúdo</label>
+      {{ form.conteudo }}
+      {{ form.conteudo.errors }}
+    </div>
+
+    <div>
+      <label for="{{ form.data_publicacao.id_for_label }}" class="block text-sm font-medium text-gray-700">Data de Publicação</label>
+      {{ form.data_publicacao }}
+      {{ form.data_publicacao.errors }}
+    </div>
+
+    <div>
+      <label for="{{ form.tags.id_for_label }}" class="block text-sm font-medium text-gray-700">Tags</label>
+      {{ form.tags }}
+      {{ form.tags.errors }}
+    </div>
+
+    <div>
+      <label for="{{ form.imagem_capa.id_for_label }}" class="block text-sm font-medium text-gray-700">Imagem de Capa</label>
+      {{ form.imagem_capa }}
+      {{ form.imagem_capa.errors }}
+    </div>
+
+    <div>
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+        Publicar
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

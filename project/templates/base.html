@@ -4,39 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>{% block title %}SWIMMING{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-blue-100 min-h-screen">
     <!-- Navbar -->
     <nav class="bg-blue-600 w-full py-3">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <!-- Logo/Marca -->
-            <a href="" class="text-white font-bold text-xl">SWIMMING</a>
-            <!-- Links de Acesso -->
+            <a href="{% url 'home' %}" class="text-white font-bold text-xl">SWIMMING</a>
             <div>
                 <a href="{% url 'login' %}" class="text-white mr-4 hover:text-blue-300">Entrar</a>
                 <a href="{% url 'user_create' %}" class="text-white hover:text-blue-300">Cadastre-se</a>
             </div>
         </div>
     </nav>
-
-
     <!-- Conteúdo Principal -->
-    <main class="flex flex-col items-center p-8 bg-white shadow-md rounded-lg mt-8 w-3/4 mx-auto">
-        <h2 class="text-blue-600 text-xl font-semibold mb-4">Explore e participe das competições!</h2>
-        <p class="text-gray-700 text-center">
-            Aqui você pode se inscrever em eventos, buscar patrocínio e acompanhar os resultados das competições.
-        </p>
-        <a href="" class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
-            Ver Eventos
-        </a>
-    </main>
+    <div class="container mx-auto p-4">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
-
-
-
-
-
-

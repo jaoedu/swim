@@ -1,0 +1,32 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Notícias</h1>
+
+    {% if noticias %}
+      <ul class="noticia-lista">
+        {% for noticia in noticias %}
+          <li class="noticia-item">
+            <h2><a href="{% url 'noticia_detalhe' noticia.pk %}">{{ noticia.titulo }}</a></h2>
+            <p><strong>Autor:</strong> {{ noticia.autor.nome }}</p>
+            <p><strong>Publicado em:</strong> {{ noticia.data_publicacao|date:"d/m/Y H:i" }}</p>
+            {% if noticia.imagem_capa %}
+              <img src="{{ noticia.imagem_capa.url }}" alt="Capa" style="max-width: 300px; height: auto;">
+            {% endif %}
+            <p>{{ noticia.conteudo|truncatewords:30 }}</p>
+            <p><strong>Tags:</strong> 
+              {% for tag in noticia.tags %}
+                <span class="tag">{{ tag }}</span>{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Nenhuma notícia encontrada.</p>
+    {% endif %}
+  </div>
+{% endblock %}

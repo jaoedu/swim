@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home - SWIMMING{% endblock %}
+
+{% block content %}
+    <!-- Seção Principal -->
+    <main class="flex flex-col items-center p-8 bg-white shadow-md rounded-lg mt-8">
+        <h2 class="text-blue-600 text-xl font-semibold mb-4">Explore e participe das competições!</h2>
+        <p class="text-gray-700 text-center">
+            Aqui você pode se inscrever em eventos, buscar patrocínio e acompanhar os resultados das competições.
+        </p>
+        <a href="{% url 'noticia_lista' %}" class="mt-4 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
+            Ver Eventos
+        </a>
+        <!-- Link para criar uma nova notícia -->
+        <a href="{% url 'noticia_criar' %}" class="mt-4 bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700">
+            Criar Notícia
+        </a>
+    </main>
+
+    <!-- Seção de Notícias -->
+    <section class="mt-8">
+        <h2 class="text-blue-600 text-xl font-semibold mb-4">Notícias Recentes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for noticia in noticias %}
+                <div class="bg-white shadow rounded p-4">
+                    {% if noticia.imagem_capa %}
+                        <img src="{{ noticia.imagem_capa.url }}" alt="{{ noticia.titulo }}" class="mb-2 w-full">
+                    {% endif %}
+                    <h3 class="text-lg font-bold">{{ noticia.titulo }}</h3>
+                    <p class="text-gray-600">{{ noticia.conteudo|truncatewords:20 }}</p>
+                    <a href="{{ noticia.get_absolute_url }}" class="text-blue-600 hover:underline mt-2 inline-block">Leia mais</a>
+                </div>
+            {% empty %}
+                <p class="text-gray-700">Nenhuma notícia encontrada.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
