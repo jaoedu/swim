@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password
 from .models import CustomUser, Atleta, Treinador, Patrocinador
+from django.utils.translation import gettext_lazy as _
 
 
 # Mixin para aplicar classes do Tailwind a todos os campos
@@ -56,13 +57,17 @@ class CustomUserCreationForm(UserCreationForm, TailwindWidgetMixin):
 
 
 class CustomAuthenticationForm(AuthenticationForm, TailwindWidgetMixin):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={"placeholder": "Email"}))
+    username = forms.EmailField(
+        label=_("Email"),
+        widget=forms.EmailInput(attrs={"placeholder": "Email"}),
+    )
     password = forms.CharField(
-        label="Senha", widget=forms.PasswordInput(attrs={"placeholder": "Senha"})
+        label=_("Senha"),
+        widget=forms.PasswordInput(attrs={"placeholder": "Senha"}),
     )
 
     def clean(self):
-        email = self.cleaned_data.get("email")
+        email = self.cleaned_data.get("username")  # aqui continua sendo "username"
         password = self.cleaned_data.get("password")
         if email and password:
             self.user_cache = authenticate(
